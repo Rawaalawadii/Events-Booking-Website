@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/_LayoutPage3.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="navbar">
+    <a href="Registration.html"><i class="fa fa-fw fa-user"></i></a>
+    <div class="navbart">
+        <a href="events2.html"></i> تواصل معنا</a>
+        <a href="events.html"></i> الفعاليات</a>
+        <a href="home2.html"></i> الرئيسية</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-75">
+        <div class="container">
+            <form action="/action_page.php">
+
+                <div class="row">
+                    <div class="col-50">
+                        <h3>احجز مقعدك</h3>
+                        <label for="fname"><i class="fa fa-user"></i> الاسم</label>
+                        <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+                        <label for="email"><i class="fa fa-envelope"></i> البريد الإلكتروني</label>
+                        <input type="text" id="email" name="email" placeholder="john@example.com">
+                        <label for="phone" class="fa fa-phone"> رقم الجوال</label>
+                        <input type="text" id="phone" name="phone" placeholder="56xxxxxxxx">
+                        <label for="city"><i class="fa fa-users"></i> عدد الفريق</label>
+                        <input type="text" id="city" name="city" placeholder="3">
+                        <label for="state"><i class="fa fa-users"></i> اسم الحدث</label>
+                        <input type="text" id="state" name="state" placeholder="هاكاثون">
+                        <label for="zip"><i class="fa fa-calendar"></i> وقت الوصول</label>
+                        <input type="date" id="zip" name="zip" placeholder="10001">
+
+
+                    </div>
+
+
+
+                </div>
+                <label>
+                    <input type="checkbox" name="sameadr"> أوافق على الشروط والأحكام
+                </label>
+                <input type="submit" value="احجز الآن" class="btn2">
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+<button class="open-button" onclick="openForm()">تواصل معنا</button>
+
+<div class="chat-popup" id="myForm">
+    <form action="/action_page.php" class="form-container">
+        <h1>تواصل معنا</h1>
+
+        <label for="msg"><b>كيف نقدر نخدمك</b></label>
+        <textarea placeholder="اكتب استفسارك هنا..." name="msg" required></textarea>
+
+        <button type="submit" class="btn">أرسل</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">أغلق</button>
+    </form>
+</div>
+
+
+
+
+</div>
+
+

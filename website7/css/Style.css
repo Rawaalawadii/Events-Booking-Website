@@ -1,0 +1,411 @@
+.navbar {
+  width: 100%;
+  background-color: #555;
+  overflow: auto;
+  margin-top: 0px;
+
+  
+}
+.navbart {
+	margin-left: 640px;
+	
+	
+}
+/* Navbar links */
+.navbar a {
+  float: left;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 17px;
+  color: white;
+}
+
+
+pagec {
+  margin: 0;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  height: 100%;
+  color: #f4f7f7;
+  background-color: #a8a8a7;
+  font: 1rem/1 'Cabin', sans-serif;
+
+}
+
+/* hide radio buttons, but still expose them to screen readers */
+input {
+  position: absolute;
+  width: 1px;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.selector {
+  display: grid;
+  grid-gap: 300px;
+  grid-template-areas:
+    'happy lovers'
+    'pick  pick';
+}
+
+/* the cards and toggle buttons are actually fat labels that can be clicked to set radio buttons */
+label {
+  display: block;
+  cursor: pointer;
+}
+
+.happy-card, .lovers-card {
+  position: relative; /* for iOS */
+  width: 450px;
+  height: 450px;
+  padding: 20px;
+  color: #586875;
+  background-color: #f4f7f7;
+  box-shadow: 0 10px 20px #0006;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out; /* important to use a symmetrical timing function (linear also works) */
+  animation-fill-mode: forwards;
+}
+
+.happy-card {
+  grid-area: happy;
+  margin-right: -10px; /* nudge closer to lover's card */
+  
+  /* these values are used to animate via translateX */
+  --swing: -25px;
+  --overlap: 25px;
+}
+
+.lovers-card {
+  grid-area: lovers;
+  margin-left: -10px; /* nudge closer to happy card */
+
+  /* these values are used to animate via translateX */
+  --swing: 25px;
+  --overlap: -25px;
+}
+
+/* when a radio button is set, swing the corresponding card fowards */
+#happy-radio:checked ~ .selector .happy-card,
+#lovers-radio:checked ~ .selector .lovers-card {
+  animation-name: swing-forwards;
+}
+
+@keyframes swing-forwards {
+  0% {
+    z-index: 1; /* start behind other card */
+    transform: scale(0.9);
+  }
+  50% {
+    transform: translateX(var(--swing));
+  }
+  100% {
+    z-index: 2; /* end in front of other card */
+    transform: translateX(var(--overlap)) scale(1.1);
+  }
+}
+
+/* when a radio button is set, swing the opposite card backwards */
+#happy-radio:checked ~ .selector .lovers-card,
+#lovers-radio:checked ~ .selector .happy-card {
+  animation-name: swing-backwards;
+}
+
+@keyframes swing-backwards {
+  0% {
+    z-index: 2;  /* start in front of other card */
+    transform: translateX(var(--overlap)) scale(1.1);
+  }
+  50% {
+    transform: translateX(var(--swing));
+  }
+  100% {
+    z-index: 1; /* end behind other card */
+    transform: scale(0.9);
+  }
+}
+
+
+.happy-pick, .lovers-pick {
+  grid-area: pick;
+  margin: 50px auto 0;
+  padding: 15px;
+  border: 1px solid #f4f7f7;
+  border-radius: 9999px;
+  background-color: #b46d73;
+  font-size: 1.25rem;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.happy-pick::before, .lovers-pick::after {
+  display: inline-block;
+  font-family: 'Font Awesome 5 Free';
+  font-weight: bold;
+}
+
+.happy-pick::before {
+  margin-right: 10px;
+  
+}
+
+.lovers-pick::after {
+  margin-left: 10px;
+  
+}
+
+/* hide happy toggle button if happy is currently selected */
+#happy-radio:checked ~ .selector .happy-pick {
+  display: none;
+}
+
+/* hide lover's toggle button if lover's is currently selected */
+#lovers-radio:checked ~ .selector .lovers-pick {
+  display: none;
+}
+
+/* increase overlap and swing distance on smaller screens */
+@media (max-width: 560px) {
+  .happy-card {
+    margin-right: -85px;
+    --swing: -100px;
+  }
+
+  .lovers-card {
+    margin-left: -85px;
+    --swing: 100px;
+  }
+}
+
+.textname {
+	text-align: center;
+}
+
+.textname2 {
+	text-align: right;
+}
+
+
+
+
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn2 {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn2:hover {
+  background-color: #45a049;
+}
+
+
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #68a177;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: #99626e;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #68a177;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: #99626e;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
