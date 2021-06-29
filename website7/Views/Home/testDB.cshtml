@@ -1,0 +1,20 @@
+﻿@model website7.Models.EventBookingView
+
+@{
+    ViewBag.Title = "testDB";
+}
+
+<div>
+    @if (Model != null)
+    {
+        <ul>
+            <li>information</li>
+            <li>eventID: <b>@Model.eventID</b></li>
+            <li>eventName: <b>@Model.eventName</b></li>
+            <li>seats: <b>@Model.remainingSeats</b></li>
+        </ul>
+        <button onclick="location.href='@Url.Action("testdbd", "Home")'" />
+    }
+
+</div>
+
